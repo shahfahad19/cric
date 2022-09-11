@@ -38,6 +38,17 @@ app.get("/c/:channel", function (req, res) {
         });
 });
 
+app.get("/ip", function (req, res) {
+    axios
+        .get("https://ipwho.is/")
+        .then(function (response) {
+            res.send(response.data);
+        })
+        .catch(function (err) {
+            res.send(err.message);
+        });
+});
+
 app.listen(process.env.PORT || 5000, () =>
     console.log("SERVER STARTED AT PORT 5000")
 );
